@@ -1,7 +1,7 @@
 package com.example.mvvmsample.data.network
 
-import okhttp3.ResponseBody
-import retrofit2.Call
+import com.example.mvvmsample.data.network.reponses.AuthResponse
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
@@ -20,14 +20,16 @@ interface MyApi {
 
     @Field  - this value should match with the key that we use in the
     api calls - variables names can be any string that you want
+
+    suspending fun can be pause and resumed at any time
  */
 
     @FormUrlEncoded
     @POST("login")
-    fun userLogin(
+    suspend fun userLogin(
         @Field("email") email: String,
         @Field("password") password: String
-    ): Call<ResponseBody>
+    ): Response<AuthResponse>
 
 
     companion object {

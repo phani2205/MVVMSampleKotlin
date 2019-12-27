@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 /*
     1. Data class will have a copy method,which allows to clone the value of current class and creates a new class
     2. data class will have hashCode methods overridden
-    3.
+    3. this data class will contains toString as well
  */
 
 const val CURRENT_USER_ID = 0

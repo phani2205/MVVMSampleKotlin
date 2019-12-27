@@ -1,12 +1,12 @@
 package com.example.mvvmsample.ui.auth
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.mvvmsample.R
+import com.example.mvvmsample.data.db.entities.User
 import com.example.mvvmsample.databinding.ActivityLoginBinding
 import com.example.mvvmsample.utils.hide
 import com.example.mvvmsample.utils.show
@@ -39,10 +39,9 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         progress_bar.show()
     }
 
-    override fun onSuccess(loginResponse: LiveData<String>) {
-        loginResponse.observe(this, Observer {
-            progress_bar.hide()
-            toast(it) })
+    override fun onSuccess(user: User) {
+        progress_bar.hide()
+        toast("${user.name} is Logged In")
     }
 
     override fun onFailure(message: String) {
