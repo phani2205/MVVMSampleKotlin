@@ -3,10 +3,16 @@ package com.example.mvvmsample.ui.auth
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.mvvmsample.R
 import com.example.mvvmsample.databinding.ActivityLoginBinding
+import com.example.mvvmsample.utils.hide
+import com.example.mvvmsample.utils.show
 import com.example.mvvmsample.utils.toast
+import kotlinx.android.synthetic.main.activity_login.*
+
 
 class LoginActivity : AppCompatActivity(), AuthListener {
 
@@ -25,17 +31,22 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
         viewModel.authListener = this
 
+        //API Url : https://api.simplifiedcoding.in/course-apis/mvvm/login
+
     }
 
     override fun onStarted() {
-        toast("Login Start")
+        progress_bar.show()
     }
 
-    override fun onSuccess() {
-        toast("Login success")
+    override fun onSuccess(loginResponse: LiveData<String>) {
+        loginResponse.observe(this, Observer {
+            progress_bar.hide()
+            toast(it) })
     }
 
     override fun onFailure(message: String) {
+        progress_bar.hide()
         toast(message)
     }
 }
