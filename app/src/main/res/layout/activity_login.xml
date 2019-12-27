@@ -19,7 +19,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/ic_app_logo" />
 
         <LinearLayout
@@ -70,8 +70,7 @@
                 android:drawablePadding="16dp"
                 android:hint="belal@gmail.com"
                 android:inputType="textEmailAddress"
-                android:padding="12dp"
-                android:text="@={viewmodel.email}" />
+                android:padding="12dp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -82,8 +81,7 @@
                 android:drawablePadding="16dp"
                 android:hint="password"
                 android:inputType="textPassword"
-                android:padding="12dp"
-                android:text="@={viewmodel.password}" />
+                android:padding="12dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -97,7 +95,6 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:onClick="@{viewmodel::onLoginButtonClick}"
                 android:text="Sign In"
                 android:textAllCaps="false" />
 
@@ -109,7 +106,6 @@
             android:layout_below="@id/linearLayout2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
-            android:onClick="@{viewmodel::onSignup}"
             android:text="Don't have an account?\nSign Up Here"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
